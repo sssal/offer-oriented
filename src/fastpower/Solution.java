@@ -4,6 +4,36 @@ package fastpower;
 
 
 public class Solution {
+    public double PowerBit(double base, int exponent){
+        int symbol = 1;
+        if (exponent < 0) {
+            if ((base - 0) < 0.000001 && (base - 0) > -0.000001) {
+                return Double.POSITIVE_INFINITY;
+            }else{
+                symbol = -1;
+                exponent = -exponent;
+            }
+        }
+        if (exponent == 0) {
+            return 1.0;
+        }
+
+        double result = 1.0;
+        while(exponent != 0){
+            if((exponent&1) == 1){
+                result*=base;
+            }
+            exponent>>=1;
+            base*=base;
+        }
+
+        if(symbol == -1) {
+            return 1/result;
+        }else{
+            return result;
+        }
+    }
+
     public double Power(double base, int exponent) {
         int symbol = 1;
         if (exponent < 0) {
