@@ -1,6 +1,20 @@
 package reverselist;
 
 public class Solution {
+    public ListNode ReverseListRevesion(ListNode head){
+        if(head == null){
+            return null;
+        }
+        if(head.next == null){
+            return head;
+        }
+        ListNode rHead = ReverseListRevesion(head.next);
+
+        head.next.next = head;
+        head.next = null;
+
+        return rHead;
+    }
     public ListNode ReverseList(ListNode head){
         if(head == null){
             return null;
